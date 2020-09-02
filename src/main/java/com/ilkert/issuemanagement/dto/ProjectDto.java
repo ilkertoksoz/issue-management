@@ -1,5 +1,7 @@
 package com.ilkert.issuemanagement.dto;
 
+import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +12,8 @@ import lombok.NoArgsConstructor;
 public class ProjectDto {
 
 	private Long id;
+	@NotNull
 	private String projectName;
+	@NotNull
 	private String projectCode;
 }
