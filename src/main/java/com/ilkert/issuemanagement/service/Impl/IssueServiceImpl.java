@@ -1,17 +1,17 @@
 package com.ilkert.issuemanagement.service.Impl;
 
-import com.ilkert.issuemanagement.dto.IssueDto;
-import com.ilkert.issuemanagement.entity.Issue;
-import com.ilkert.issuemanagement.repository.IssueRepository;
-import com.ilkert.issuemanagement.service.IssueService;
-import com.ilkert.issuemanagement.util.Tpage;
-
 import java.util.Arrays;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import com.ilkert.issuemanagement.dto.IssueDto;
+import com.ilkert.issuemanagement.entity.Issue;
+import com.ilkert.issuemanagement.repository.IssueRepository;
+import com.ilkert.issuemanagement.service.IssueService;
+import com.ilkert.issuemanagement.util.Tpage;
 
 @Service
 public class IssueServiceImpl implements IssueService {
@@ -60,10 +60,14 @@ public class IssueServiceImpl implements IssueService {
 	}
 
 	@Override
-	public Boolean delete(IssueDto issue) {
-		// TODO Auto-generated method stub
-		return null;
+	public Boolean delete(Long issueId) {
+		issueRepository.deleteById(issueId);
+		return true;
 	}
 
- 
-}
+	@Override
+	public IssueDto update(Long id, IssueDto issue) {
+		// TODO Auto-generated method stub
+		return null;
+	} 
+} 

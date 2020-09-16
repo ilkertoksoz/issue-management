@@ -1,12 +1,12 @@
 package com.ilkert.issuemanagement.service.Impl;
 
-import com.ilkert.issuemanagement.entity.User;
-import com.ilkert.issuemanagement.repository.UserRepository;
-import com.ilkert.issuemanagement.service.UserService;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import com.ilkert.issuemanagement.entity.User;
+import com.ilkert.issuemanagement.repository.UserRepository;
+import com.ilkert.issuemanagement.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -44,4 +44,4 @@ public class UserServiceImpl implements UserService {
 	public User getByUserName(String username) {
 		return userRepository.findByUsername(username);
 	}
-}
+} 

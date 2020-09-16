@@ -1,29 +1,26 @@
 package com.ilkert.issuemanagement.service;
 
+import java.util.List;
 
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.ilkert.issuemanagement.dto.ProjectDto;
 import com.ilkert.issuemanagement.entity.Project;
+import com.ilkert.issuemanagement.util.Tpage;
 
-import java.util.List;
+public interface ProjectService {
 
-import javax.validation.Valid;
+	ProjectDto Save(ProjectDto project);
 
-public interface ProjectService  {
+	ProjectDto getById(Long id);
 
-    ProjectDto Save(ProjectDto project);
+	ProjectDto getByProjectCode(String projectCode);
 
-    ProjectDto getById(Long id);
+	List<Project> getByProjectCodeContains(String projectCode);
 
-    ProjectDto getByProjectCode(String projectCode);
+	Tpage<ProjectDto> getAllPageable(Pageable pageable);
 
-    List<Project> getByProjectCodeContains(String projectCode);
+	Boolean delete(Project project);
 
-    Page<Project> getAllPageable(Pageable pageable);
-
-    Boolean delete(Project project);
-    
-    ProjectDto update(Long id, ProjectDto project);
+	ProjectDto update(Long id, ProjectDto project);
 }

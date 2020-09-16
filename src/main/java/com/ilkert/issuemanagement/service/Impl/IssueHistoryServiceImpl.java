@@ -51,4 +51,4 @@ public class IssueHistoryServiceImpl implements IssueHistoryService {
 		return Boolean.TRUE;
 	}
 
-}
+} 

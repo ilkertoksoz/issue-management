@@ -62,7 +62,7 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 
 	@Override
-	public Page<Project> getAllPageable(Pageable pageable) {
+	public Tpage<ProjectDto> getAllPageable(Pageable pageable) {
 
 		Page<Project> data = projectRepository.findAll(pageable);
 		Tpage<ProjectDto> response = new Tpage<ProjectDto>();
@@ -74,10 +74,33 @@ public class ProjectServiceImpl implements ProjectService {
 	public Boolean delete(Project project) {
 		return null;
 	}
+	
+	public Boolean delete(Long id) {
+		 projectRepository.deleteById(id);
+		 return true;
+	}
 
 	@Override
 	public ProjectDto update(Long id, ProjectDto project) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Project projectDb = projectRepository.getOne(id);
+		
+		if (null == projectDb) {
+			
+			throw new IllegalArgumentException("Project Does not existed ID : " + id);
+		}
+
+		Project projectCheck = projectRepository.getAllByProjectCodeAndIdNot(project.getProjectCode(), project.getId());
+		
+		if (null != projectCheck && projectCheck.getId() != projectDb.getId()) {
+			
+			throw new IllegalArgumentException("Project Code Already Existed");
+		}
+		
+		projectDb.setProjectCode(project.getProjectCode());
+		projectDb.setProjectName(project.getProjectName());
+		
+		projectRepository.save(projectDb);
+		return modelMapper.map(projectDb, ProjectDto.class);
 	}
-}
+} 

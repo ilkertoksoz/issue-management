@@ -14,7 +14,7 @@ public interface ProjectRepository extends JpaRepository<Project,Long> {
 
     Project getByProjectCode(String projectCode);
 
-    List<Project> getAllByProjectCodeAndIdNotNull(String projectCode);
+    Project getAllByProjectCodeAndIdNot(String projectCode, Long id);
 
     List<Project> getAllByProjectCodeAndProjectNameContains(String projectCode, String name);
 
