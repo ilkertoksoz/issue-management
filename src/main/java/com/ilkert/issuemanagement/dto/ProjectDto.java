@@ -14,6 +14,7 @@ import lombok.NoArgsConstructor;
 @ApiModel(value = "Project Data Transfer Object")
 public class ProjectDto {
 
+	@ApiModelProperty(value = "Project ID")
 	private Long id;
 	@NotNull
 	@ApiModelProperty(required = true, value = "Name Of Project")

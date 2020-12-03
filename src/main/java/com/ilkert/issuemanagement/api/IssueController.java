@@ -17,8 +17,12 @@ import com.ilkert.issuemanagement.dto.IssueDto;
 import com.ilkert.issuemanagement.service.Impl.IssueServiceImpl;
 import com.ilkert.issuemanagement.util.ApiPaths;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(ApiPaths.IssueCtrl.CTRL)
+@Api(value = ApiPaths.IssueCtrl.CTRL, description = "Issue APIs")
 public class IssueController {
 
 	private final IssueServiceImpl issueServiceImpl;
@@ -28,18 +32,21 @@ public class IssueController {
 	}
 
 	@GetMapping("/{id}")
+	@ApiOperation(value = "Get By Id Operation", response = IssueDto.class)
 	public ResponseEntity<IssueDto> getById(@PathVariable(value = "id", required = true) Long id) {
 
 		return new ResponseEntity<>(issueServiceImpl.getById(id), HttpStatus.OK);
 	}
 
 	@PostMapping
+	@ApiOperation(value = "Create Operation", response = IssueDto.class)
 	public ResponseEntity<IssueDto> createProject(@Valid @RequestBody IssueDto issueDto) {
 
 		return new ResponseEntity<>(issueServiceImpl.Save(issueDto), HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
+	@ApiOperation(value = "Update Operation", response = IssueDto.class)
 	public ResponseEntity<IssueDto> updateProject(@PathVariable(value = "id", required = true) Long id,
 			@Valid @RequestBody IssueDto issueDto) {
 
@@ -47,6 +54,7 @@ public class IssueController {
 	}
 
 	@DeleteMapping("/{id}")
+	@ApiOperation(value = "Delete Operation", response = Boolean.class)
 	public ResponseEntity<Boolean> delete(@PathVariable(value = "id", required = true) Long id) {
 
 		return new ResponseEntity<>(issueServiceImpl.delete(id), HttpStatus.OK);

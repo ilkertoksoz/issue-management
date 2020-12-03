@@ -1,0 +1,17 @@
+[
+	{
+		"_class": "com.ilkert.issuemanagement.entity.Project",
+		"projectCode": "IM1",
+		"projectName": "Issue Management Project1"
+	},
+	{
+		"_class": "com.ilkert.issuemanagement.entity.Project",
+		"projectCode": "ERP-S1",
+		"projectName": "ERP Project for Sales1"
+	},
+	{
+		"_class": "com.ilkert.issuemanagement.entity.Project",
+		"projectCode": "CRM-S1",
+		"projectName": "CRM Project for Sales1"
+	}
+] 

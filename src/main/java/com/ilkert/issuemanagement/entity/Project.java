@@ -13,7 +13,12 @@ import javax.persistence.*;
 @EqualsAndHashCode
 public class Project extends BaseEntity{
 
-    @Id
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8403023791657371713L;
+
+	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
